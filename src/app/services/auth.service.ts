@@ -36,4 +36,8 @@ export class AuthService {
     provider.addScope('email');
     await this.fbAuth.auth.signInWithPopup(provider);
   }
+
+  getStatus() {
+    return this.fbAuth.authState;
+  }
 }

@@ -3,6 +3,7 @@ import * as firebase from 'firebase/app';
 import { Injectable } from '@angular/core';
 import { User } from '../models/user.model';
 import { AngularFireAuth  } from '@angular/fire/auth';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -35,6 +36,10 @@ export class AuthService {
     provider.addScope('profile');
     provider.addScope('email');
     await this.fbAuth.auth.signInWithPopup(provider);
+  }
+
+  isAuth() {
+    return this.fbAuth.authState.pipe(map(auth => auth));
   }
 
   getStatus() {

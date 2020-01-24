@@ -33,4 +33,26 @@ export class LoginComponent implements OnInit {
     }
   }
 
+  async onLoginWithFacebook() {
+    this.isError = false;
+    try {
+      await this.authService.loginWithFacebook();
+      this.router.navigate(['']);
+    } catch (err) {
+      this.isError = true;
+      console.error(err.message);
+    }
+  }
+
+  async onLoginWithGoogle() {
+    this.isError = false;
+    try {
+      await this.authService.loginWithGoogle();
+      this.router.navigate(['']);
+    } catch (err) {
+      this.isError = true;
+      console.error(err.message);
+    }
+  }
+
 }
